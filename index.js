@@ -6,6 +6,7 @@ let intentos = 0;
 let contadorPista = 10;
 let titulo = null;
 let campeon1 = null;
+let nombresCampeones1 = null;
 async function obtenerCampeon() {
     try {
         const respuesta = await fetch('http://ddragon.leagueoflegends.com/cdn/11.14.1/data/es_ES/champion.json');
@@ -14,6 +15,8 @@ async function obtenerCampeon() {
         const campeones = datos.data;
         const nombresCampeones = Object.keys(campeones);
         
+        nombresCampeones1 = nombresCampeones;
+
         const numTotalCampeones = nombresCampeones.length;
         const numCampeon = Math.floor(Math.random() * numTotalCampeones); // Utiliza Math.floor en lugar de Math.round para asegurar que el número generado esté dentro del rango correcto
         
@@ -65,10 +68,19 @@ async function enviarRespuesta() {
     }
 
     if (!acierto) {
+        
+        if(nombresCampeones1.includes(intentoChamp)){
         const iconUrl = `https://ddragon.leagueoflegends.com/cdn/11.14.1/img/champion/${intentoChamp}.png`; 
         const img = document.createElement("img");
         img.src = iconUrl;
         document.getElementById("icon").appendChild(img);
+        }
+        else{
+            const iconUrl = "placeholder.png"; 
+        const img = document.createElement("img");
+        img.src = iconUrl;
+        document.getElementById("icon").appendChild(img);
+        }
     }
 }
 

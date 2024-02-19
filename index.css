@@ -29,7 +29,6 @@ form label {
 form input[type="text"] {
     width: 96.5%;
     padding: 10px;
-    
     border-radius: 5px;
     margin-top: 20px;
 }
@@ -51,6 +50,9 @@ form button {
 p, label {
     font-family: fuente_lol;
     text-align: center;
+}
+#icon{
+    padding: 5px;
 }
 
 @font-face {
